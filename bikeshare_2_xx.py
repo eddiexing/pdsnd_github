@@ -206,15 +206,18 @@ def print_trip(df):
 
 def main():
     while True:
+        # Data preparation
         city, month, day = get_filters()
         df = load_data(city, month, day)
 
+        # Data presentation
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
         print_trip(df)
         
+        # To control the interactive loop
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
