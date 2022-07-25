@@ -186,7 +186,7 @@ def user_stats(df):
 
 
 def print_trip(df):
-    """Displays detailed trips without any aggregation."""
+    """Displays detailed trip data."""
     
     individual_trip_count = 0
     while True:
