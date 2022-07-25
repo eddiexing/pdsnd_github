@@ -36,7 +36,7 @@ def get_filters():
         if month in MONTH_LIST or month == 'all':
             break
         else:
-            print('\nSorry, please input a valid month!')
+            print('\nSorry, please input a valid month! e.g. January')
             continue
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
@@ -45,7 +45,7 @@ def get_filters():
         if day in DAY_LIST or day == 'all':
             break
         else:
-            print('\nSorry, please input a valid day of week!')
+            print('\nSorry, please input a valid day of week! e.g. Monday')
             continue
 
     print('-'*40)
@@ -101,17 +101,17 @@ def time_stats(df):
     # display the most common month
     df['month'] = df['Start Time'].dt.month
     popular_month = df['month'].mode()[0]
-    print('Most Popular Month:', popular_month)
+    print('Most popular month:', popular_month)
 
     # display the most common day of week
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     popular_day_of_week = df['day_of_week'].mode()[0]
-    print('Most Popular day of week:', popular_day_of_week)
+    print('Most popular day of week:', popular_day_of_week)
 
     # display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
-    popular_hour = df['hour'].mode()[0]
-    print('Most Popular Start Hour:', popular_hour)
+    popular_hour = int(df['hour'].mode()[0])
+    print('Most popular start hour:', popular_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -120,16 +120,16 @@ def time_stats(df):
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
-    print('\nCalculating The Most Popular Stations and Trip...\n')
+    print('\nCalculating the most popular stations and trip...\n')
     start_time = time.time()
 
     # display most commonly used start station
     popular_start_station = df.groupby(['Start Station'])['Start Station'].count().nlargest(1)
-    print('Most commonly used Start Station:', popular_start_station)
+    print('Most commonly used Start station:', popular_start_station)
 
     # display most commonly used end station
     popular_end_station = df.groupby(['End Station'])['End Station'].count().nlargest(1)
-    print('Most commonly used End Station:', popular_end_station)
+    print('Most commonly used End station:', popular_end_station)
 
     # display most frequent combination of start station and end station trip
     popular_trip = df.groupby(['Start Station', 'End Station'])['Start Station'].count().nlargest(1)
