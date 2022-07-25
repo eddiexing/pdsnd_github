@@ -36,7 +36,7 @@ def get_filters():
         if month in MONTH_LIST or month == 'all':
             break
         else:
-            print('\nSorry, please input a valid month!')
+            print('\nSorry, please input a valid month! e.g. January')
             continue
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
@@ -45,7 +45,7 @@ def get_filters():
         if day in DAY_LIST or day == 'all':
             break
         else:
-            print('\nSorry, please input a valid day of week!')
+            print('\nSorry, please input a valid day of week! e.g. Monday')
             continue
 
     print('-'*40)
